@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Riski Fauzi – Link Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #07090f;
+    --surface:  #0e1220;
+    --surface2: #141a2e;
+    --border:   rgba(255,255,255,0.07);
+    --white:    #eef2ff;
+    --gray:     #7a85a3;
+    --purple:   #a78bfa;
+    --pink:     #f472b6;
+    --cyan:     #22d3ee;
+    --green:    #34d399;
+    --gold:     #fbbf24;
+    --orange:   #fb923c;
+    --tg:       #38bdf8;
+    --wa:       #4ade80;
+    --tt:       #fb7185;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex; justify-content: center;
+    overflow-x: hidden;
+  }
+
+  /* ─── ANIMATED BG ─── */
+  .bg-wrap { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+  .orb {
+    position: absolute; border-radius: 50%; filter: blur(80px);
+    animation: drift 14s ease-in-out infinite alternate;
+  }
+  .orb1 { width: 480px; height: 480px; background: radial-gradient(circle, rgba(139,92,246,0.18), transparent 70%); top: -120px; left: -80px; animation-delay: 0s; }
+  .orb2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(34,211,238,0.13), transparent 70%); top: 30%; right: -100px; animation-delay: -5s; }
+  .orb3 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(244,114,182,0.1), transparent 70%); bottom: -80px; left: 10%; animation-delay: -9s; }
+  @keyframes drift {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(30px, 25px) scale(1.08); }
+  }
+  .noise {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ─── PAGE ─── */
+  .page {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 460px;
+    padding: 3.5rem 1.4rem 4rem;
+    display: flex; flex-direction: column; align-items: center;
+  }
+
+  /* ─── AVATAR ─── */
+  .avatar-wrap { position: relative; margin-bottom: 1.3rem; }
+  .avatar-ring {
+    position: absolute; inset: -6px; border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--purple), var(--cyan), var(--pink), var(--purple));
+    animation: spin 5s linear infinite;
+    filter: blur(1px);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .avatar-inner {
+    position: relative; z-index: 1;
+    width: 96px; height: 96px; border-radius: 50%;
+    background: linear-gradient(135deg, #1e1b4b 0%, #0c1445 100%);
+    border: 3px solid var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1px;
+  }
+
+  /* ─── PROFILE ─── */
+  .profile { text-align: center; margin-bottom: 0.5rem; }
+  .profile-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.35rem; font-weight: 800; margin-bottom: 0.3rem;
+    background: linear-gradient(135deg, var(--white) 30%, var(--purple) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .profile-role {
+    font-size: 0.82rem; font-weight: 600; margin-bottom: 0.9rem;
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .profile-bio {
+    font-size: 0.83rem; color: var(--gray); line-height: 1.7;
+    max-width: 320px; margin: 0 auto 1.1rem;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin-bottom: 0.5rem; }
+  .tag {
+    padding: 0.22rem 0.7rem; border-radius: 100px; font-size: 0.68rem; font-weight: 700;
+    border: 1px solid; letter-spacing: 0.03em;
+  }
+  .tag-purple { color: var(--purple); border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.07); }
+  .tag-cyan   { color: var(--cyan);   border-color: rgba(34,211,238,0.3);  background: rgba(34,211,238,0.07);  }
+  .tag-pink   { color: var(--pink);   border-color: rgba(244,114,182,0.3); background: rgba(244,114,182,0.07); }
+  .tag-green  { color: var(--green);  border-color: rgba(52,211,153,0.3);  background: rgba(52,211,153,0.07);  }
+  .tag-gold   { color: var(--gold);   border-color: rgba(251,191,36,0.3);  background: rgba(251,191,36,0.07);  }
+
+  /* ─── DIVIDER ─── */
+  .sep {
+    width: 100%; display: flex; align-items: center; gap: 0.8rem;
+    margin: 1.8rem 0 1.1rem;
+  }
+  .sep-line { flex: 1; height: 1px; background: var(--border); }
+  .sep-label {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gray);
+    white-space: nowrap;
+  }
+
+  /* ─── LINKS ─── */
+  .links { width: 100%; display: flex; flex-direction: column; gap: 0.65rem; }
+
+  .lnk {
+    display: flex; align-items: center; gap: 1rem;
+    width: 100%; padding: 1rem 1.2rem;
+    border-radius: 16px; text-decoration: none; color: var(--white);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: transform 0.22s cubic-bezier(.34,1.56,.64,1), box-shadow 0.22s, border-color 0.22s, background 0.22s;
+    position: relative; overflow: hidden;
+  }
+  .lnk::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .lnk:hover { transform: translateY(-3px) scale(1.01); }
+
+  .lnk-ico {
+    width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    border: 1px solid;
+  }
+  .lnk-body { flex: 1; min-width: 0; }
+  .lnk-title { display: block; font-size: 0.9rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lnk-sub   { display: block; font-size: 0.73rem; color: var(--gray); margin-top: 0.12rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lnk-arr   { font-size: 1rem; color: var(--gray); flex-shrink: 0; opacity: 0.5; margin-left: 0.3rem; }
+
+  /* Web Dev */
+  .lk-web { border-color: rgba(34,211,238,0.2); }
+  .lk-web:hover { border-color: rgba(34,211,238,0.5); box-shadow: 0 8px 36px rgba(34,211,238,0.12); background: rgba(34,211,238,0.05); }
+  .lk-web .lnk-ico { background: rgba(34,211,238,0.1); border-color: rgba(34,211,238,0.25); }
+  .lk-web .lnk-title { color: var(--cyan); }
+
+  /* AI */
+  .lk-ai { border-color: rgba(251,191,36,0.2); }
+  .lk-ai:hover { border-color: rgba(251,191,36,0.5); box-shadow: 0 8px 36px rgba(251,191,36,0.1); background: rgba(251,191,36,0.04); }
+  .lk-ai .lnk-ico { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.25); }
+  .lk-ai .lnk-title { color: var(--gold); }
+
+  /* Arduino */
+  .lk-arduino { border-color: rgba(167,139,250,0.2); }
+  .lk-arduino:hover { border-color: rgba(167,139,250,0.5); box-shadow: 0 8px 36px rgba(167,139,250,0.12); background: rgba(167,139,250,0.05); }
+  .lk-arduino .lnk-ico { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.25); }
+  .lk-arduino .lnk-title { color: var(--purple); }
+
+  /* IoT */
+  .lk-iot { border-color: rgba(52,211,153,0.2); }
+  .lk-iot:hover { border-color: rgba(52,211,153,0.5); box-shadow: 0 8px 36px rgba(52,211,153,0.12); background: rgba(52,211,153,0.04); }
+  .lk-iot .lnk-ico { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.25); }
+  .lk-iot .lnk-title { color: var(--green); }
+
+  /* Telegram */
+  .lk-tg { border-color: rgba(56,189,248,0.2); }
+  .lk-tg:hover { border-color: rgba(56,189,248,0.5); box-shadow: 0 8px 36px rgba(56,189,248,0.12); background: rgba(56,189,248,0.05); }
+  .lk-tg .lnk-ico { background: rgba(56,189,248,0.1); border-color: rgba(56,189,248,0.25); }
+  .lk-tg .lnk-title { color: var(--tg); }
+
+  /* WhatsApp */
+  .lk-wa { border-color: rgba(74,222,128,0.2); }
+  .lk-wa:hover { border-color: rgba(74,222,128,0.5); box-shadow: 0 8px 36px rgba(74,222,128,0.12); background: rgba(74,222,128,0.04); }
+  .lk-wa .lnk-ico { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.25); }
+  .lk-wa .lnk-title { color: var(--wa); }
+
+  /* TikTok */
+  .lk-tt { border-color: rgba(251,113,133,0.2); }
+  .lk-tt:hover { border-color: rgba(251,113,133,0.5); box-shadow: 0 8px 36px rgba(251,113,133,0.12); background: rgba(251,113,133,0.04); }
+  .lk-tt .lnk-ico { background: rgba(251,113,133,0.1); border-color: rgba(251,113,133,0.25); }
+  .lk-tt .lnk-title { color: var(--tt); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    margin-top: 2.8rem; text-align: center;
+    font-size: 0.72rem; color: rgba(122,133,163,0.45); line-height: 1.8;
+  }
+
+  /* ─── ENTRANCE ─── */
+  .avatar-wrap, .profile, .tags, .sep, .lnk, .footer {
+    opacity: 0; transform: translateY(16px);
+    animation: rise 0.5s cubic-bezier(.22,.68,0,1.2) forwards;
+  }
+  .avatar-wrap { animation-delay: 0.0s; }
+  .profile     { animation-delay: 0.08s; }
+  .tags        { animation-delay: 0.14s; }
+  .sep         { animation-delay: 0.2s;  }
+  .links .lnk:nth-child(1) { animation-delay: 0.26s; }
+  .links .lnk:nth-child(2) { animation-delay: 0.31s; }
+  .links .lnk:nth-child(3) { animation-delay: 0.36s; }
+  .links .lnk:nth-child(4) { animation-delay: 0.41s; }
+  .links .lnk:nth-child(5) { animation-delay: 0.46s; }
+  .links .lnk:nth-child(6) { animation-delay: 0.51s; }
+  .links .lnk:nth-child(7) { animation-delay: 0.56s; }
+  .footer { animation-delay: 0.62s; }
+
+  /* sep in links group */
+  .links-sep-wrap {
+    opacity: 0; transform: translateY(16px);
+    animation: rise 0.5s cubic-bezier(.22,.68,0,1.2) forwards;
+    animation-delay: 0.44s;
+    width: 100%;
+  }
+
+  @keyframes rise { to { opacity:1; transform:translateY(0); } }
+  @media (prefers-reduced-motion:reduce) { * { animation:none!important; opacity:1!important; transform:none!important; } }
+</style>
+</head>
+<body>
+
+<div class="bg-wrap">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+<div class="noise"></div>
+
+<div class="page">
+
+  <!-- AVATAR -->
+  <div class="avatar-wrap">
+    <div class="avatar-ring"></div>
+    <div class="avatar-inner">MRF</div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="profile">
+    <div class="profile-name">Muhammad Riski Fauzi</div>
+    <div class="profile-role">Programmer | AI Automation</div>
+    <p class="profile-bio">Kursus privat online Web Dev, AI Automation, Robotik Arduino & IoT. Belajar langsung praktek, 1-on-1 bareng Fauzi.</p>
+  </div>
+
+  <!-- TAGS -->
+  <div class="tags">
+    <span class="tag tag-cyan">Web Dev</span>
+    <span class="tag tag-gold">AI Automation</span>
+    <span class="tag tag-purple">Arduino</span>
+    <span class="tag tag-green">IoT</span>
+  </div>
+
+  <!-- SECTION: KURSUS -->
+  <div class="sep">
+    <div class="sep-line"></div>
+    <div class="sep-label">🎓 Daftar Kursus Privat</div>
+    <div class="sep-line"></div>
+  </div>
+
+  <div class="links">
+    <a href="https://wa.me/6281360798087?text=Halo+Kak+Riski%2C+saya+mau+kursus+Web+Development" class="lnk lk-web" target="_blank">
+      <div class="lnk-ico">🌐</div>
+      <div class="lnk-body">
+        <span class="lnk-title">Kursus Web Development</span>
+      </div>
+      <span class="lnk-arr">›</span>
+    </a>
+
+    <a href="https://wa.me/6281360798087?text=Halo+Kak+Riski%2C+saya+mau+kursus+AI+Automation" class="lnk lk-ai" target="_blank">
+      <div class="lnk-ico">🤖</div>
+      <div class="lnk-body">
+        <span class="lnk-title">Kursus AI Automation</span>
+      </div>
+      <span class="lnk-arr">›</span>
+    </a>
+
+    <a href="https://wa.me/6281360798087?text=Halo+Kak+Riski%2C+saya+mau+kursus+Robotik+Arduino" class="lnk lk-arduino" target="_blank">
+      <div class="lnk-ico">🔧</div>
+      <div class="lnk-body">
+        <span class="lnk-title">Kursus Robotik Arduino</span>
+      </div>
+      <span class="lnk-arr">›</span>
+    </a>
+
+    <a href="https://wa.me/6281360798087?text=Halo+Kak+Riski%2C+saya+mau+kursus+IoT" class="lnk lk-iot" target="_blank">
+      <div class="lnk-ico">📡</div>
+      <div class="lnk-body">
+        <span class="lnk-title">Kursus Internet of Things</span>
+      </div>
+      <span class="lnk-arr">›</span>
+    </a>
+  </div>
+
+  <!-- SECTION: KOMUNITAS -->
+  <div class="sep links-sep-wrap">
+    <div class="sep-line"></div>
+    <div class="sep-label">🤝 Komunitas & Sosial</div>
+    <div class="sep-line"></div>
+  </div>
+
+  <div class="links">
+    <a href="https://t.me/+nJGnONUmIJQwYmY1" class="lnk lk-tg" target="_blank">
+      <div class="lnk-ico">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(56,189,248,0.9)"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 13.503l-2.97-.924c-.644-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.898.956z"/></svg>
+      </div>
+      <div class="lnk-body">
+        <span class="lnk-title">Grup Telegram Belajar</span>
+      </div>
+      <span class="lnk-arr">›</span>
+    </a>
+
+    <a href="https://chat.whatsapp.com/KsfKDZFaClVHjCq0FwDdUA" class="lnk lk-wa" target="_blank">
+      <div class="lnk-ico">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(74,222,128,0.9)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div class="lnk-body">
+        <span class="lnk-title">Grup WhatsApp Belajar</span>
+      </div>
+      <span class="lnk-arr">›</span>
+    </a>
+
+    <a href="https://www.tiktok.com/@muhammadriskifauzi10" class="lnk lk-tt" target="_blank">
+      <div class="lnk-ico">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(251,113,133,0.9)"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+      </div>
+      <div class="lnk-body">
+        <span class="lnk-title">TikTok – Konten Belajar</span>
+      </div>
+      <span class="lnk-arr">›</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    © <span id="year"></span> Muhammad Riski Fauzi
+  </div>
+
+</div>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
